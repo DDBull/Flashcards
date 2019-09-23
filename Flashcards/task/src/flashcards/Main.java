@@ -19,16 +19,29 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        String cardName = scanner.nextLine();
-        String cardDefinition = scanner.nextLine();
-        String answer = scanner.nextLine();
+        System.out.println("Input the number of cards:");
+        int totalCards = Integer.valueOf(scanner.nextLine());
+        String[] cards = new String[totalCards + 1];
+        String[] definitions = new String[totalCards + 1];
+        String userAnswer;
 
-        flashCards card = new flashCards(cardName, cardDefinition);
+        for (int i = 1; i <= totalCards; i++) {
+            System.out.println("The card #" + i);
+            cards[i] = scanner.nextLine();
 
-        if (card.answerMatches(answer)) {
-            System.out.println("Your answer is right!");
-        } else {
-            System.out.println("Your answer is wrong...");
+            System.out.println("The definition of the card #" + i);
+            definitions[i] = scanner.nextLine();
+        }
+
+        for (int i = 1; i <= totalCards; i++) {
+            System.out.println("Print the definition of \"" + cards[i] + "\"");
+            userAnswer = scanner.nextLine();
+
+            if (definitions[i].equals(userAnswer)) {
+                System.out.println("Correct answer.");
+            } else {
+                System.out.println("Wrong answer. (The correct one is \"" + definitions[i] + "\".)");
+            }
         }
     }
 }
